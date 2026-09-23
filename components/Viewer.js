@@ -167,7 +167,7 @@ export default function Viewer() {
           <select
             value={SIZE_PRESETS.some((p) => p.value === targetHeight) ? targetHeight : ""}
             onChange={(e) => setTargetHeight(e.target.value)}
-            style={{ ...S.select, flex: 1 }}
+            style={{ ...S.select, flex: "1 1 200px", width: "auto" }}
           >
             {SIZE_PRESETS.map((p) => (
               <option key={p.label} value={p.value}>
@@ -180,7 +180,7 @@ export default function Viewer() {
             onChange={(e) => setTargetHeight(e.target.value)}
             placeholder="height in m"
             inputMode="decimal"
-            style={{ ...S.input, maxWidth: 130 }}
+            style={{ ...S.input, flex: "0 1 120px" }}
           />
         </div>
       </form>
@@ -277,7 +277,7 @@ const S = {
   h1: { fontSize: 26, margin: "0 0 6px", fontWeight: 650, letterSpacing: "-0.01em" },
   sub: { margin: 0, color: "#9aa3af", fontSize: 15, lineHeight: 1.5 },
   form: { display: "grid", gap: 10, marginBottom: 16 },
-  row: { display: "flex", gap: 8 },
+  row: { display: "flex", gap: 8, flexWrap: "wrap", width: "100%" },
   select: {
     padding: "10px 12px",
     borderRadius: 10,
@@ -285,9 +285,13 @@ const S = {
     background: "#171a21",
     color: "#e8eaed",
     fontSize: 15,
+    width: "100%",
+    maxWidth: "100%",
+    minWidth: 0,
+    boxSizing: "border-box",
   },
   input: {
-    flex: 1,
+    flex: "1 1 180px",
     padding: "10px 12px",
     borderRadius: 10,
     border: "1px solid #2a2f3a",
@@ -295,8 +299,10 @@ const S = {
     color: "#e8eaed",
     fontSize: 15,
     minWidth: 0,
+    boxSizing: "border-box",
   },
   btn: {
+    flex: "0 0 auto",
     padding: "10px 18px",
     borderRadius: 10,
     border: "none",
@@ -305,6 +311,7 @@ const S = {
     fontSize: 15,
     fontWeight: 600,
     cursor: "pointer",
+    boxSizing: "border-box",
   },
   stage: {
     height: "min(60vh, 520px)",
